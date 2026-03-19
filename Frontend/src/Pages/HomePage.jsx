@@ -7,7 +7,7 @@ import NoteCard from './NoteCard';
 import { FileTextIcon, PlusCircleIcon } from "lucide-react";
 import { LoaderIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
+import api from "../api.js"
 function HomePage() {
 
   const [isRateLimited, setIsRateLimited] = useState(false);
@@ -16,7 +16,7 @@ function HomePage() {
 
   const fetchPost = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/notes");
+      const res = await api.get("/notes");
       setNotes(res.data);
       setIsRateLimited(false);
     } catch (error) {

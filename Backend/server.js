@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const connectDB = require("./db.js");
 const cors = require("cors");
+const path=require("path")
 const rateLimit = require("express-rate-limit");
+
 
 dotenv.config();
 
@@ -22,17 +24,27 @@ const limiter = rateLimit({
 
 // Middleware
 app.use(express.json());
+
+if(process.env.NODE_ENV !== "production"){
 app.use(cors());
 
-// Sample route
-app.get("/", (req, res) => {
-  res.send("test the api route");
-});
+}
+
+
+
 
 
 
 // Notes routes (apply limiter here only)
 app.use("/api/notes", limiter, apiRoutes);
+
+if(process.env.NODE_ENV==="production"){
+  app.use(express.static(path.join(__dirname,"../Frontend/dist")))
+
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(__dirname,"../Frontend","dist","index.html"))
+})
+}
 
 // DB connection
 connectDB().then(() => {
