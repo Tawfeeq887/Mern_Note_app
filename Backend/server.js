@@ -26,8 +26,10 @@ const limiter = rateLimit({
 app.use(express.json());
 
 if(process.env.NODE_ENV !== "production"){
-app.use(cors());
 
+app.use(cors({
+  origin:"http://localhost:5173"
+}))
 }
 
 
