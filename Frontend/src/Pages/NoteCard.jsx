@@ -3,8 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatDate } from '../lib/utils.js';
 import toast from 'react-hot-toast';
-import axios from 'axios';
-import api from "../api.js"
+import api from "../lib/axios.js"
 
 function NoteCard({ note, setNotes }) {
 

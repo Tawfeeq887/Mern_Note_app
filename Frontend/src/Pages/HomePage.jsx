@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Components/Navbar';
 import RateLimitedUi from '../Components/RateLimitedUi';
-import axios from "axios";
 import toast from "react-hot-toast";
 import NoteCard from './NoteCard';
 import { FileTextIcon, PlusCircleIcon } from "lucide-react";
 import { LoaderIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import api from "../api.js"
+import api from "../lib/axios.js"
+
 function HomePage() {
 
   const [isRateLimited, setIsRateLimited] = useState(false);

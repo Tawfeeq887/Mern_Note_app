@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import axios from "axios";
 import { ArrowLeftIcon } from 'lucide-react';
+import api from "../lib/axios.js"
+
 
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
@@ -27,7 +28,7 @@ function CreatePage() {
       }
       Setnotes([...notes, newNote])
       console.log(notes)
-      const res=await axios.post("http://localhost:5000/api/notes",newNote);
+      const res=await api.post("/notes",newNote);
       SetTitle("");
       SetDescription("");
       toast.success("New Note Added Successfully");

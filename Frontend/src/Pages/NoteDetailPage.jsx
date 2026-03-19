@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link, useNavigate } from "react-router-dom"
 import toast from 'react-hot-toast';
 import { LoaderIcon, Trash2Icon, ArrowLeftIcon } from 'lucide-react';
-import axios from 'axios';
-import api from "../api.js"
+import api from "../lib/axios.js"
 
 
 function NoteDetailPage() {

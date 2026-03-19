@@ -28,14 +28,9 @@ app.use(express.json());
 if(process.env.NODE_ENV !== "production"){
 
 app.use(cors({
-  origin:"http://localhost:5173"
+  origin:"http://localhost:5173",
 }))
 }
-
-
-
-
-
 
 // Notes routes (apply limiter here only)
 app.use("/api/notes", limiter, apiRoutes);
@@ -47,7 +42,6 @@ app.get("*",(req,res)=>{
   res.sendFile(path.join(__dirname,"../Frontend","dist","index.html"))
 })
 }
-
 // DB connection
 connectDB().then(() => {
   const PORT = process.env.PORT || 5000;
